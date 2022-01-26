@@ -1,0 +1,13 @@
+.idea
+.vscode
+.Ds_Store
+.env
+venvs/
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+pip-log.txt
+pip-delete-this-directory.txt
+pip-wheel-metadata/
