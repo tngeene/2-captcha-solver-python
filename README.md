@@ -1,6 +1,6 @@
 # Recaptcha Solver Python
 
-> A python 3 utillity that automates captcha solving.
+> A python 3 program that automates captcha solving.
 
 ## Table of Content
 
@@ -26,6 +26,7 @@
 ### Development
 
 Run the python file and this will trigger the program to run.
+Ensure you have the proper environment variables for this to work.
 
 ### Demo
 
