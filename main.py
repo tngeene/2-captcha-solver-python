@@ -30,9 +30,8 @@ solver = TwoCaptcha(**solver_config)
 
 
 class SolveCaptcha:
-    
-    @classmethod 
-    def launch_selenium(cls, response):
+
+    def launch_selenium(self, response):
         if response:
             print('Captcha Solved! Launching Browser...')
             # initiate chrome webdriver
@@ -58,8 +57,9 @@ class SolveCaptcha:
             driver.execute_script(
                 "arguments[0].setAttribute('style','type: text; visibility:visible;');",
                 google_captcha_response_input)
+            # input the code received from 2captcha API
             google_captcha_response_input.send_keys(response.get('code'))
-
+            # hide the captch input
             driver.execute_script(
                 "arguments[0].setAttribute('style', 'display:none;');",
                 google_captcha_response_input)
@@ -75,13 +75,13 @@ class SolveCaptcha:
         else:
             print('No response.')
 
-    def initiate_captcha_solver():
+    def initiate_captcha_solver(self):
         try:
             print('Solving captcha...')
             result = solver.recaptcha(sitekey=site_key, url=website_url)
             # launch browser window upon successful
             # completion of captcha solving.
-            SolveCaptcha.launch_selenium(result)
+            self.launch_selenium(result)
         except ValidationException as e:
             # invalid parameters passed
             print(e)
@@ -100,5 +100,4 @@ class SolveCaptcha:
             return e
 
 
-if __name__ == '__main__':
-    SolveCaptcha.initiate_captcha_solver()
+SolveCaptcha().initiate_captcha_solver()
